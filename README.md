@@ -2,15 +2,17 @@
 
 To test the performance of different types of placeholders when using lazyload.
 
-## HOWO TO USE THIS
+## HOW TO USE THIS
 
 Open the index page in your browser. 
 
-Cloning this repo or just...
+Clone this repo or just...
 
-➡ [follow this link](https://www.andreaverlicchi.eu/lazyload_placeholders_test/):
+➡ [Follow this link](https://www.andreaverlicchi.eu/lazyload_placeholders_test/)
 
 Then try and measure on the linked pages.
+
+Some results of LightHouse tests are already provided under the results folder.
 
 
 ## TODO
