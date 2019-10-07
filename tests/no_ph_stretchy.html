@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8" />
+	<title>
+		Lazyload tests
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="preconnect" href="https://via.placeholder.com">
+	<style>
+		html {
+			box-sizing: border-box;
+		}
+		
+		*,
+		*::before,
+		*::after {
+			box-sizing: inherit;
+		}
+		
+		html {
+			background: grey;
+		}
+		
+		body {
+			max-width: 1024px;
+			margin: 0 auto;
+			background: white;
+		}
+
+		a {
+			color: black;
+		}
+		
+		.products {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+		
+		.product {
+			display: block;
+			text-align: center;
+			text-decoration: none;
+			flex-basis: 206px;
+			flex-grow: 1; /* <-- this enables the image scaling to fill the gaps */
+		}
+		
+		.product_image {
+			padding-bottom: 150%;
+			position: relative;
+		}
+
+		.product img {
+			display: block;
+			position: absolute;
+			top: 0; left: 0;
+			width: 100%;
+			height: auto;
+		}
+		
+		img:not([src]) {
+			visibility: hidden;
+		}
+		
+		/* Fixes Firefox anomaly during image load */
+		@-moz-document url-prefix() {
+			img:-moz-loading {
+				visibility: hidden;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="products">
+		<!-- Eagerly loading 4 -->
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="01"
+				src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=01"
+				srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=01 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=01 2x
+				"
+				/>
+			</div>
+			<p>Product 01</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="02"
+				src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=02"
+				srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=02 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=02 2x
+				"
+				/>
+			</div>
+			<p>Product 02</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="03"
+				src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=03"
+				srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=03 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=03 2x
+				"
+				/>
+			</div>
+			<p>Product 03</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="04"
+				src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=04"
+				srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=04 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=04 2x
+				"
+				/>
+			</div>
+			<p>Product 04</p>
+		</a>
+		<!-- Lazy loading more! -->
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="05"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=05"
+				data-srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=05 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=05 2x
+				"
+				/>
+			</div>
+			<p>Product 05</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="06"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=06"
+				data-srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=06 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=06 2x
+				"
+				/>
+			</div>
+			<p>Product 06</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="07"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=07"
+				data-srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=07 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=07 2x
+				"
+				/>
+			</div>
+			<p>Product 07</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="08"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=08"
+				data-srcset="
+				https://via.placeholder.com/206x309/FFFFFF/F31F31?text=08 1x,
+				https://via.placeholder.com/412x618/FFFFFF/F31F31?text=08 2x
+				"
+				/>
+			</div>
+			<p>Product 08</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="09"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=09"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=09 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=09 2x"
+				/>
+			</div>
+			<p>Product 09</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="10"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=10"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=10 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=10 2x"
+				/>
+			</div>
+			<p>Product 10</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="11"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=11"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=11 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=11 2x"
+				/>
+			</div>
+			<p>Product 11</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="12"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=12"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=12 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=12 2x"
+				/>
+			</div>
+			<p>Product 12</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="13"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=13"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=13 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=13 2x"
+				/>
+			</div>
+			<p>Product 13</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="14"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=14"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=14 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=14 2x"
+				/>
+			</div>
+			<p>Product 14</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="15"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=15"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=15 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=15 2x"
+				/>
+			</div>
+			<p>Product 15</p>
+		</a>
+		<a href="#" class="product">
+			<div class="product_image">
+				<img
+				alt="16"
+				class="lazy"
+				data-src="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=16"
+				data-srcset="https://via.placeholder.com/206x309/FFFFFF/F31F31?text=16 1x, https://via.placeholder.com/412x618/FFFFFF/F31F31?text=16 2x"
+				/>
+			</div>
+			<p>Product 16</p>
+		</a>
+	</div>
+</body>
+
+<script src="../node_modules/vanilla-lazyload/dist/lazyload.iife.min.js"></script>
+<script>
+	(function() {
+		function logElementEvent(eventName, element) {
+			console.log(
+			Date.now(),
+			eventName,
+			element.getAttribute("data-src")
+			);
+		}
+		
+		var callback_enter = function(element) {
+			logElementEvent("🔑 ENTERED", element);
+		};
+		var callback_exit = function(element) {
+			logElementEvent("🚪 EXITED", element);
+		};
+		var callback_reveal = function(element) {
+			logElementEvent("👁️ REVEALED", element);
+		};
+		var callback_loaded = function(element) {
+			logElementEvent("👍 LOADED", element);
+		};
+		var callback_error = function(element) {
+			logElementEvent("💀 ERROR", element);
+			element.src =
+			"https://via.placeholder.com/412x618/?text=Eror+Placeholder";
+		};
+		var callback_finish = function() {
+			logElementEvent("✔️ FINISHED", document.documentElement);
+		};
+		
+		var ll = new LazyLoad({
+			elements_selector: ".lazy",
+			// Assign the callbacks defined above
+			callback_enter: callback_enter,
+			callback_exit: callback_exit,
+			callback_reveal: callback_reveal,
+			callback_loaded: callback_loaded,
+			callback_error: callback_error,
+			callback_finish: callback_finish
+		});
+	})();
+</script>
+</html>
