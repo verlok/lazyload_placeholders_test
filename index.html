@@ -6,17 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LazyLoad Placeholder Peformance Test</title>
     <style>
-        table {border-collapse: collapse; }
+        body {max-width: 800px; margin:0 auto}
+        table {border-collapse: collapse; width: 100%}
         td, th {border: 1px solid black; border-style: dotted; text-align: center}
-        th,a {padding: 1em; }
+        th, table a {padding: 1em; }
+        ul a {padding: 0.2em 0.5em}
         a {display: block}
         a:hover {background:#eee}
     </style>
 </head>
 <body>
+    <h1>Tests</h1>
     <table>
         <tr>
-            <td>Demos</td>
+            <td></td>
             <th scope="col">Fixed images</th>
             <th scope="col">Stretchy images</th>
         </tr>
@@ -36,6 +39,25 @@
             <td><a href="./tests/external_ph_stretchy.html">External placeholder, stretchy</a></td>
         </tr>
     </table>
-    
+    <h1>Results</h1>
+    <p>Results are provided under the results folder</p>
+    <h2>Smartphones</h2>
+    <ul>
+        <li><a href="./results/mobile/no_ph.html">mobile/no_ph</a></li>
+        <li><a href="./results/mobile/no_ph_stretchy.html">mobile/no_ph_stretchy</a></li>
+        <li><a href="./results/mobile/inline_ph.html">mobile/inline_ph</a></li>
+        <li><a href="./results/mobile/inline_ph_stretchy.html">mobile/inline_ph_stretchy</a></li>
+        <li><a href="./results/mobile/external_ph.html">mobile/external_ph</a></li>
+        <li><a href="./results/mobile/external_ph_stretchy.html">mobile/external_ph_stretchy</a></li>
+    </ul>
+    <h2>desktop</h2>
+    <ul>
+        <li><a href="./results/desktop/no_ph.html">desktop/no_ph</a></li>
+        <li><a href="./results/desktop/no_ph_stretchy.html">desktop/no_ph_stretchy</a></li>
+        <li><a href="./results/desktop/inline_ph.html">desktop/inline_ph</a></li>
+        <li><a href="./results/desktop/inline_ph_stretchy.html">desktop/inline_ph_stretchy</a></li>
+        <li><a href="./results/desktop/external_ph.html">desktop/external_ph</a></li>
+        <li><a href="./results/desktop/external_ph_stretchy.html">desktop/external_ph_stretchy</a></li>
+    </ul>
 </body>
 </html>

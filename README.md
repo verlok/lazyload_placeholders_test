@@ -13,8 +13,3 @@ Clone this repo or just...
 Then try and measure on the linked pages.
 
 Some results of LightHouse tests are already provided under the results folder.
-
-
-## TODO
-
-Link results html in the index.html
